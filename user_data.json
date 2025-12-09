@@ -1,0 +1,18 @@
+{
+    "chintu": {
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "money": 1234
+    },
+    "tarun": {
+        "password": "87754d049ae4717a1e4b566b063182e52ab1797490212deb34e6e8cc11fa4fb5",
+        "money": 325676
+    },
+    "anish": {
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "money": 8989
+    },
+    "hih": {
+        "password": "03fa5e7090f6cc48b78927499cfced2256b766c3b6131d75dd10a1675688e4c4",
+        "money": 12345
+    }
+}

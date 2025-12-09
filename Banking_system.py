@@ -1,12 +1,15 @@
 import json
 import pandas as pd
 import hashlib
+import os
+
+absolute_path=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\user_data.json"
 
 def signup():
     print("------------------------------")
     name=input("Enter your name: ")
 
-    with open("user_data.json","r") as f:
+    with open(absolute_path,"r") as f:
         aa=json.load(f)
 
         
@@ -27,12 +30,12 @@ def signup():
                 }
             }
 
-            with open("user_data.json" , "r") as f:
+            with open(absolute_path , "r") as f:
                 ha=json.load(f)
     
             ha.update(signup_data)
 
-            with open("user_data.json","w") as f:
+            with open(absolute_path,"w") as f:
                 json.dump(ha,f,indent=4)
 
             print("-------------------------------")
@@ -53,7 +56,7 @@ def login():
 
     sname=input("Enter your name: ")
 
-    with open("user_data.json","r") as f:
+    with open(absolute_path,"r") as f:
         aa=json.load(f)
     
     if sname.lower()=="admin":
@@ -65,7 +68,7 @@ def login():
         spass=input("Enter your password:  ")
         spass_hashed=hashing_password(spass)
 
-        with open("user_data.json","r") as f:
+        with open(absolute_path,"r") as f:
             ka=json.load(f)
             s1pass=ka[sname.lower()]["password"]
             mon1=ka[sname.lower()]["money"]
@@ -98,7 +101,7 @@ def admin_control():
     print("1. See data ")
     print("2. Edit data")
 
-    with open("user_data.json","r") as f:
+    with open(absolute_path,"r") as f:
             aa=json.load(f)
     
     data=pd.DataFrame.from_dict(aa,orient="index")
@@ -149,7 +152,7 @@ def admin_control():
 
 def edit_data():
 
-    with open("user_data.json","r") as f:
+    with open(absolute_path,"r") as f:
             aa=json.load(f)
     
     data=pd.DataFrame.from_dict(aa,orient="index")
@@ -172,7 +175,7 @@ def edit_data():
         new_password=input("Enter the new password: ")
         aa[client][data1]=new_password
 
-    with open("user_data.json","w") as f:
+    with open(absolute_path,"w") as f:
         json.dump(aa,f,indent=4)
 
     ndf=pd.DataFrame.from_dict(aa,orient="index")
