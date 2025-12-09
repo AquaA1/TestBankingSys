@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-
+import hashlib
 
 def signup():
     print("------------------------------")
@@ -16,11 +16,13 @@ def signup():
 
         else:
             password=input("Enter a strong password: ")
+            #hashing the password
+            hashed_p=hashing_password(password)
             money=int(input("Enter amount: "))
 
             signup_data={
             name.lower():{
-                "password":password,
+                "password":hashed_p,
                 'money':money
                 }
             }
@@ -44,6 +46,9 @@ def signup():
             else:
                 exit()
 
+def hashing_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
 def login():
 
     sname=input("Enter your name: ")
@@ -58,13 +63,14 @@ def login():
     else:
 
         spass=input("Enter your password:  ")
+        spass_hashed=hashing_password(spass)
 
         with open("user_data.json","r") as f:
             ka=json.load(f)
             s1pass=ka[sname.lower()]["password"]
             mon1=ka[sname.lower()]["money"]
 
-        if spass==s1pass:
+        if spass_hashed==s1pass:
             print("Welcome")
             print("Avaiable balance is: $ ",mon1)
         
@@ -100,31 +106,46 @@ def admin_control():
     data.rename(columns={"index":"Coustmer names"} ,inplace=True)
     data.index +=1
 
-    
-    aa1=int(input("select [1][2]: "))
-    print("-------------------------------")
-    if aa1==1:
-        print("User Info")
-        print("-"*20)
-        print(data)
+    while True:
+        try:
+            aa1=int(input("select [1][2]: "))
+        except:
+            print("Choose correctly!!!")
+            continue
 
-    elif aa1==2:
-        edit_data()
+        print("-------------------------------")
+        if aa1==1:
+            print("User Info")
+            print("-"*20)
+            print(data)
+            aa11=input("Want to go back? y/n: ")
+            if aa11=="y":
+                continue
+            else:
+                exit()
 
-        again1=input("Want to change something else? y/n : ")
-        if again1=="y":
+        elif aa1==2:
             edit_data()
-        
-        elif again1=="n":
-            # print("this works")
-            a=input("Want to login again? y/n: ")
-            if a=="y":
-                login()
 
+            again1=input("Want to change something else? y/n : ")
+            if again1=="y":
+                continue
+            
+            elif again1=="n":
+                # print("this works")
+                a=input("Want to login again? y/n: ")
+                if a=="y":
+                    login()
+
+                else:
+                    exit()
             else:
                 exit()
         else:
-            exit()
+            print("Choose correctly!!")
+            continue
+
+
 
 def edit_data():
 
