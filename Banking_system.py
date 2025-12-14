@@ -5,9 +5,17 @@ import os
 
 absolute_path=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\user_data.json"
 
+def user_name():
+    username=input("Enter your name: ")
+    return username
+
+name=None
+
 def signup():
+    if name is None:
+        name=user_name()
+        
     print("------------------------------")
-    name=input("Enter your name: ")
 
     with open(absolute_path,"r") as f:
         aa=json.load(f)
@@ -21,7 +29,7 @@ def signup():
             password=input("Enter a strong password: ")
             #hashing the password
             hashed_p=hashing_password(password)
-            money=int(input("Enter amount: "))
+            money=int(input("Enter amount to deposit: "))
 
             signup_data={
             name.lower():{
@@ -63,6 +71,14 @@ def login():
         admin()
         exit()
 
+    elif sname not in aa:
+        print("No user found")
+        ask_again=input("Want to try again? y/n:")
+        if ask_again=="y":
+            start()
+        else:
+            exit()
+
     else:
 
         spass=input("Enter your password:  ")
@@ -76,9 +92,10 @@ def login():
         if spass_hashed==s1pass:
             print("Welcome")
             print("Avaiable balance is: $ ",mon1)
+            user_control()
         
         else:
-            print("No user found")
+            print("Wrong password")
             start()
 
 def admin():
@@ -184,6 +201,28 @@ def edit_data():
     ndf.index +=1
 
     print(ndf)
+
+def user_control():
+    with open(absolute_path,"r") as f:
+        temp=json.load(f)
+    user_depo=input("Want to deposit Money? or change password? y/n: ")
+    if user_depo=="y":
+        edit_data_u()
+    else:
+        exit()
+
+def edit_data_u(sname):
+    with open(absolute_path,"r") as f:
+        aa=json.load(f)
+        mon1=aa[sname.lower()]["money"]
+
+
+    print("[1]Deposit money")
+    print("[2]change Password")    
+    user_choice=input("What you want to do?:")
+    if user_choice==1:
+        depo_money=int(input("Enter the amout of money you want to deposit: "))
+        aa[sname]["money"]=mon1+depo_money
 
         
 
