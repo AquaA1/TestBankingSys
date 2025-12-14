@@ -12,9 +12,10 @@ def user_name():
 name=None
 
 def signup():
+    global name
     if name is None:
         name=user_name()
-        
+
     print("------------------------------")
 
     with open(absolute_path,"r") as f:
@@ -60,8 +61,10 @@ def signup():
 def hashing_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
+
 def login():
 
+    global sname
     sname=input("Enter your name: ")
 
     with open(absolute_path,"r") as f:
@@ -211,7 +214,7 @@ def user_control():
     else:
         exit()
 
-def edit_data_u(sname):
+def edit_data_u():
     with open(absolute_path,"r") as f:
         aa=json.load(f)
         mon1=aa[sname.lower()]["money"]
@@ -219,10 +222,13 @@ def edit_data_u(sname):
 
     print("[1]Deposit money")
     print("[2]change Password")    
-    user_choice=input("What you want to do?:")
+    user_choice=int(input("What you want to do?:"))
     if user_choice==1:
         depo_money=int(input("Enter the amout of money you want to deposit: "))
         aa[sname]["money"]=mon1+depo_money
+
+        with open(absolute_path,"w") as k:
+            json.dump(aa,k,indent=4)
 
         
 

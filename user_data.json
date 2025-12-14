@@ -9,10 +9,14 @@
     },
     "anish": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-        "money": 8989
+        "money": 8990
     },
     "hih": {
         "password": "03fa5e7090f6cc48b78927499cfced2256b766c3b6131d75dd10a1675688e4c4",
         "money": 12345
+    },
+    "haha": {
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "money": 24
     }
 }
