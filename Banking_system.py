@@ -206,23 +206,25 @@ def edit_data():
 
     print(ndf)
 
-def user_control():
-    with open(absolute_path,"r") as f:
-        temp=json.load(f)
-    user_depo=input("Want to deposit Money? or change password? y/n: ")
-    if user_depo=="y":
-        edit_data_u()
-    else:
-        exit()
+# def user_control():
+#     with open(absolute_path,"r") as f:
+#         temp=json.load(f)
+#     user_depo=input("Want to see choices? y/n: ")
+#     if user_depo=="y":
+#         edit_data_u()
+#     else:
+#         exit()
 
-def edit_data_u():
+def user_control():
     with open(absolute_path,"r") as f:
         aa=json.load(f)
         mon1=aa[sname.lower()]["money"]
 
-
+    print("-"*20)
     print("[1]Deposit money")
-    print("[2]change Password")    
+    print("[2]Withdraw money")
+    print("[3]change Password")
+    print("-"*20)    
     user_choice=int(input("What you want to do?:"))
     if user_choice==1:
         while True:
@@ -232,13 +234,36 @@ def edit_data_u():
 
                 with open(absolute_path,"w") as k:
                     json.dump(aa,k,indent=4)
+                print("Amount has been deposited")
+                print("New balance is : $",aa[sname]["money"])
 
                 break
 
             except ValueError:
                 print("Enter money in numbers")
     
-    if user_choice==2:
+    elif user_choice==2:
+        while True:
+            try:
+                withdraw_money=int(input("Enter the amout of money you want to withdraw: "))
+                if aa[sname.lower()]["money"]<withdraw_money:
+                    print("Not enough money") 
+                else:
+                    aa[sname.lower()]["money"]=mon1-withdraw_money
+
+                    with open(absolute_path,"w") as k:
+                        json.dump(aa,k,indent=4)
+
+                    print("Money has been withdrawn")
+
+                    print("Avalable balance: ","$", aa[sname.lower()]["money"])
+
+                    break
+
+            except ValueError:
+                print("Enter money in numbers")
+
+    elif user_choice==3:
         c_password=input("Enter your current password: ")
 
         with open(absolute_path, "r") as k:
@@ -259,11 +284,12 @@ def edit_data_u():
             print("-"*20)
             print("Your are logged out login again")
             login()
-            
 
-        else:
-            print("Re-enter")
-                
+
+
+    else:
+        print("Re-enter")
+            
 
         
 
