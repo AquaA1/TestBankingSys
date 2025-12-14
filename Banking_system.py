@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import hashlib
+import getpass
 import os
 
 absolute_path=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\user_data.json"
@@ -84,7 +85,7 @@ def login():
 
     else:
 
-        spass=input("Enter your password:  ")
+        spass=getpass.getpass("Enter your password:  ")
         spass_hashed=hashing_password(spass)
 
         with open(absolute_path,"r") as f:
@@ -255,6 +256,9 @@ def edit_data_u():
             with open(absolute_path,"w") as k:
                 json.dump(p,k,indent=4)
             print("Password succesfully changed!!!!")
+            print("-"*20)
+            print("Your are logged out login again")
+            login()
             
 
         else:
