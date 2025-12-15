@@ -103,7 +103,7 @@ def login():
             start()
 
 def admin():
-    apass=input("Enter the password:")
+    apass=getpass.getpass("Enter the password:")
     if apass=="a":
         admin_control()
 
@@ -224,71 +224,82 @@ def user_control():
     print("[1]","\033[31m","Deposit money","\033[0m")
     print("[2]","\033[32m","Withdraw money","\033[0m")
     print("[3]  change Password")
-    print("-"*20)    
-    user_choice=int(input("What you want to do?:"))
-    if user_choice==1:
-        while True:
-            try:
-                depo_money=int(input("Enter the amout of money you want to deposit: "))
-                aa[sname]["money"]=mon1+depo_money
-
-                with open(absolute_path,"w") as k:
-                    json.dump(aa,k,indent=4)
-                print("Amount has been deposited")
-                print("New balance is : $",aa[sname]["money"])
-
-                break
-
-            except ValueError:
-                print("Enter money in numbers")
+    print("[0]  EXIT")
+    print("-"*20) 
     
-    elif user_choice==2:
-        while True:
-            try:
-                withdraw_money=int(input("Enter the amout of money you want to withdraw: "))
-                if aa[sname.lower()]["money"]<withdraw_money:
-                    print("Not enough money") 
-                else:
-                    aa[sname.lower()]["money"]=mon1-withdraw_money
+
+    while True:
+        try:
+            user_choice=int(input("What you want to do?:"))
+            if user_choice==1:
+                while True:
+                    try:
+                        depo_money=int(input("Enter the amout of money you want to deposit: "))
+                        aa[sname]["money"]=mon1+depo_money
+
+                        with open(absolute_path,"w") as k:
+                            json.dump(aa,k,indent=4)
+                        print("Amount has been deposited")
+                        print("New balance is : $",aa[sname]["money"])
+
+                        break
+
+                    except ValueError:
+                        print("Enter money in numbers")
+                continue
+
+            
+            elif user_choice==2:
+                while True:
+                    try:
+                        withdraw_money=int(input("Enter the amout of money you want to withdraw: "))
+                        if aa[sname.lower()]["money"]<withdraw_money:
+                            print("Not enough money") 
+                        else:
+                            aa[sname.lower()]["money"]=mon1-withdraw_money
+
+                            with open(absolute_path,"w") as k:
+                                json.dump(aa,k,indent=4)
+
+                            print("Money has been withdrawn")
+
+                            print("Avalable balance: ","$", aa[sname.lower()]["money"])
+
+                            break
+
+                    except ValueError:
+                        print("Enter money in numbers")
+                continue
+
+            elif user_choice==3:
+                c_password=getpass.getpass("Enter your current password: ")
+
+                with open(absolute_path, "r") as k:
+                    p=json.load(k)
+                    pcheck=p[sname.lower()]["password"]
+
+                    hash_c_password=hashing_password(c_password)
+
+                if hash_c_password==pcheck:
+                    c_password=getpass.getpass("Enter new password: ")
+                    hash_c_password=hashing_password(c_password)
+                    
+                    p[sname]["password"]=hash_c_password
 
                     with open(absolute_path,"w") as k:
-                        json.dump(aa,k,indent=4)
+                        json.dump(p,k,indent=4)
+                    print("Password succesfully changed!!!!")
+                    print("-"*20)
+                    print("Your are logged out login again")
+                    login()
+                
+                continue
 
-                    print("Money has been withdrawn")
+            elif user_choice==0:
+                exit()
 
-                    print("Avalable balance: ","$", aa[sname.lower()]["money"])
-
-                    break
-
-            except ValueError:
-                print("Enter money in numbers")
-
-    elif user_choice==3:
-        c_password=input("Enter your current password: ")
-
-        with open(absolute_path, "r") as k:
-            p=json.load(k)
-            pcheck=p[sname.lower()]["password"]
-
-            hash_c_password=hashing_password(c_password)
-
-        if hash_c_password==pcheck:
-            c_password=input("Enter new password: ")
-            hash_c_password=hashing_password(c_password)
-            
-            p[sname]["password"]=hash_c_password
-
-            with open(absolute_path,"w") as k:
-                json.dump(p,k,indent=4)
-            print("Password succesfully changed!!!!")
-            print("-"*20)
-            print("Your are logged out login again")
-            login()
-
-
-
-    else:
-        print("Re-enter")
+        except ValueError:
+            print("Re enter with correct place values")
             
 
         
