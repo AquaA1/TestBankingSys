@@ -221,9 +221,9 @@ def user_control():
         mon1=aa[sname.lower()]["money"]
 
     print("-"*20)
-    print("[1]Deposit money")
-    print("[2]Withdraw money")
-    print("[3]change Password")
+    print("[1]","\033[31m","Deposit money","\033[0m")
+    print("[2]","\033[32m","Withdraw money","\033[0m")
+    print("[3]  change Password")
     print("-"*20)    
     user_choice=int(input("What you want to do?:"))
     if user_choice==1:
