@@ -16,5 +16,7 @@ As of now the way user input is talen is completely changed and now implementing
 <br>
 Added the withdraw and deposit option with change of password also added the getpass for better password entry
 <br>
-hiiiiiiiii
+added colour using magic words(lol)
+<br>
+Made the user interface error free so that it does not throw an error with small input error
 
