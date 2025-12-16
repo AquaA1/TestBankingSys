@@ -156,7 +156,6 @@ def admin_control():
                 continue
             
             elif again1=="n":
-                # print("this works")
                 a=input("Want to login again? y/n: ")
                 if a=="y":
                     login()
@@ -206,14 +205,6 @@ def edit_data():
 
     print(ndf)
 
-# def user_control():
-#     with open(absolute_path,"r") as f:
-#         temp=json.load(f)
-#     user_depo=input("Want to see choices? y/n: ")
-#     if user_depo=="y":
-#         edit_data_u()
-#     else:
-#         exit()
 
 def user_control():
     with open(absolute_path,"r") as f:
@@ -236,7 +227,7 @@ def user_control():
                     try:
                         depo_money=int(input("Enter the amout of money you want to deposit: "))
                         aa[sname]["money"]=mon1+depo_money
-
+ 
                         with open(absolute_path,"w") as k:
                             json.dump(aa,k,indent=4)
                         print("Amount has been deposited")
