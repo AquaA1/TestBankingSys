@@ -19,4 +19,7 @@ Added the withdraw and deposit option with change of password also added the get
 added colour using magic words(lol)
 <br>
 Made the user interface error free so that it does not throw an error with small input error
+<br>
+Going to add a history so that the user can see the histroy also
+
 
