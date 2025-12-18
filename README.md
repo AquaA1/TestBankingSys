@@ -22,4 +22,10 @@ Made the user interface error free so that it does not throw an error with small
 <br>
 Going to add a history so that the user can see the histroy also
 
+# To do
+Need to add loan section 
+<br>
+need to add forget password
+
+
 
