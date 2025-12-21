@@ -1,31 +1,75 @@
-# TestBankingSys
-<br>
-By Anish Sah
-<br>
-This project is a banking system (I am still working on) 
-<br>
-As of now this can take data from client and store it .json file and It also have an admin place where we can see all the data of client 
-<br>
-to do I have to add hashlib to hash the pasword of the client and also have to add an loan section (Done)
-<br>
-now I will add a feture tha can change password
-<br>
-Added the hashing now changing the input
-<br>
-As of now the way user input is talen is completely changed and now implementing user data change by user
-<br>
-Added the withdraw and deposit option with change of password also added the getpass for better password entry
-<br>
-added colour using magic words(lol)
-<br>
-Made the user interface error free so that it does not throw an error with small input error
-<br>
-Going to add a history so that the user can see the histroy also
+# 🏦 TestBankingSys
 
-# To do
-Need to add loan section 
-<br>
-need to add forget password
+**Author:** Anish Sah  
 
+---
 
+## 📌 About the Project
 
+**TestBankingSys** is a console-based banking system built using Python.  
+This project is still under development and is mainly created to improve my understanding of real-world programming concepts such as authentication, data storage, security, and error handling.
+
+The system allows users to create bank accounts, manage money transactions, and securely store data using a JSON file.  
+An admin section is also available to monitor all registered users.
+
+---
+
+## 🚀 Features Implemented
+
+### 👤 User Features
+- User registration and login system
+- Secure password hashing using `hashlib`
+- Hidden password input using `getpass`
+- Deposit and withdrawal functionality
+- Change password option
+- Improved input validation to prevent crashes
+- Colored terminal output for better readability
+- Basic loan section implemented
+
+### 🔐 Security
+- Passwords are stored only in hashed form
+- No plain-text password storage
+- Secure password input
+
+### 🛠 Admin Features
+- Admin login
+- View all user data stored in the system
+
+---
+
+## 🗂 Data Storage
+- User data is stored in a **JSON file**, acting as a simple database
+- Stores:
+  - User credentials (hashed)
+  - Account balance
+  - Loan details
+  - Transaction-related information
+
+---
+
+## 🧠 Learning Outcomes
+Through this project, I am learning:
+- File handling using JSON
+- Password hashing and basic security practices
+- Function-based program structure
+- Error handling and input validation
+- Designing a small-scale real-world application
+
+---
+
+## 🔮 Future Improvements (To Do)
+- Transaction history for users
+- Forgot password functionality
+- Improved loan management system
+- Better admin controls and analytics
+- Code refactoring for scalability
+
+---
+
+## ⚠️ Disclaimer
+This project is created **only for educational purposes**.  
+It is not intended for real banking or financial use.
+
+---
+
+⭐ If you find this project useful or interesting, feel free to star the repository!
