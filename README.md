@@ -42,7 +42,7 @@ An admin section is also available to monitor all registered users.
 - Stores:
   - User credentials (hashed)
   - Account balance
-  - Loan details
+  - Loan details (Not added)
   - Transaction-related information
 
 ---
@@ -60,7 +60,7 @@ Through this project, I am learning:
 ## 🔮 Future Improvements (To Do)
 - Transaction history for users
 - Forgot password functionality
-- Improved loan management system
+- Improved loan management system (not added)
 - Better admin controls and analytics
 - Code refactoring for scalability
 
