@@ -214,7 +214,8 @@ def user_control():
     print("-"*20)
     print("[1]","\033[31m","Deposit money","\033[0m")
     print("[2]","\033[32m","Withdraw money","\033[0m")
-    print("[3]  change Password")
+    print("[3]  Change Password")
+    print("[4]  Transfer money")
     print("[0]  EXIT")
     print("-"*20) 
     
@@ -288,6 +289,44 @@ def user_control():
 
             elif user_choice==0:
                 exit()
+
+            elif user_choice==4:
+                while True:
+                    with open(absolute_path,"r") as m:
+                        data_load=json.load(m)
+
+                    user_tname=input("Enter the name of the person you want to transfer money to: ")
+                    if user_tname in data_load:
+                        print("User found !!!")
+                        try:
+                            amt_t=int(input("Enter the amount to be transferd: "))
+                            if data_load[sname]["money"]<amt_t:
+                                print("Not enough funds")
+                                break
+                            
+                            else:
+                                data_load[sname]["money"]-=amt_t
+                                data_load[user_tname]["money"]+=amt_t
+
+                                #uploading the data
+                                with open(absolute_path,"w") as k:
+                                    json.dump(data_load,k,indent=4)
+
+                                print("balance left: ",data_load[sname]["money"])
+                                print("-"*20)
+                                print("[1]","\033[31m","Deposit money","\033[0m")
+                                print("[2]","\033[32m","Withdraw money","\033[0m")
+                                print("[3]  Change Password")
+                                print("[4]  Transfer money")
+                                print("[0]  EXIT")
+                                break
+                        except ValueError:
+                            print("Re enter with correct values")
+                        
+                    
+                    else:
+                        print("User not found , re enter the name")
+                        continue
 
         except ValueError:
             print("Re enter with correct place values")
