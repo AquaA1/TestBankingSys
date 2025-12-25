@@ -24,7 +24,7 @@ An admin section is also available to monitor all registered users.
 - Change password option
 - Improved input validation to prevent crashes
 - Colored terminal output for better readability
-- 
+- A history file 
 
 ### 🔐 Security
 - Passwords are stored only in hashed form
