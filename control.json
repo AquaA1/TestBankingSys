@@ -13,6 +13,13 @@
                 "to": "chintu",
                 "transfered amount": 400,
                 "date and time": "2025-12-25 20:35:09"
+            },
+            {
+                "type": "money recived",
+                "from": "tarun",
+                "to": "anish",
+                "transfered amount": 50,
+                "date and time": "2025-12-25 20:38:31"
             }
         ]
     },
@@ -30,6 +37,23 @@
                 "to": "chintu",
                 "transfered amount": 400,
                 "date and time": "2025-12-25 20:35:09"
+            }
+        ]
+    },
+    "tarun": {
+        "history": [
+            "account created on: 2025-12-25 20:38:31",
+            {
+                "type": "First depo",
+                "amount": 60000,
+                "time and date": "2025-12-25 20:38:31"
+            },
+            {
+                "type": "money transfer",
+                "from": "tarun",
+                "to": "anish",
+                "transfered amount": 50,
+                "date and time": "2025-12-25 20:38:31"
             }
         ]
     }
