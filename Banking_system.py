@@ -3,19 +3,15 @@ import pandas as pd
 import hashlib
 import getpass
 import os
+from datetime import datetime
 
+now=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 absolute_path=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\user_data.json"
-
-def user_name():
-    username=input("Enter your nameeeeee: ")
-    return username
-
-name=None
+control_j=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\control.json"
 
 def signup():
     global name
-    if name is None:
-        name=user_name()
+    name=input("Enter your name: ")
 
     print("------------------------------")
 
@@ -47,6 +43,32 @@ def signup():
 
             with open(absolute_path,"w") as f:
                 json.dump(ha,f,indent=4)
+
+            his_transfer={
+                "type":"First depo",
+                "amount":money,
+                "time and date":now
+            }
+
+            his_create={
+                name.lower():{
+                    "history":[
+
+                    ]
+                }
+            }
+
+            create_time=f"account created on: {now}"
+            with open(control_j , "r") as k:
+                ma=json.load(k)
+            
+            ma.update(his_create)
+            ma[name]["history"].append(create_time)
+            ma[name]["history"].append(his_transfer)
+
+            with open(control_j, "w") as m:
+                json.dump(ma,m,indent=4)
+            
 
             print("-------------------------------")
             print("login complete!!!!")
@@ -308,10 +330,39 @@ def user_control():
                                 data_load[sname]["money"]-=amt_t
                                 data_load[user_tname]["money"]+=amt_t
 
+                                u_transfer_jason={
+                                    "type":"money transfer",
+                                    "from":sname,
+                                    "to":user_tname,
+                                    "transfered amount":amt_t,
+                                    "date and time":now
+                                }
+
+                                c_transfer_jason={
+                                    "type":"money recived",
+                                    "from":sname,
+                                    "to":user_tname,
+                                    "transfered amount":amt_t,
+                                    "date and time":now
+                                }
+
                                 #uploading the data
                                 with open(absolute_path,"w") as k:
                                     json.dump(data_load,k,indent=4)
 
+                                #uploading data to control.json
+                                with open(control_j,"r") as k:
+                                    his_load=json.load(k)
+                                
+                                his_load[sname]["history"].append(u_transfer_jason)
+                                his_load[user_tname]["history"].append(c_transfer_jason)
+
+                                with open(control_j,"w") as m:
+                                    json.dump(his_load,m,indent=4)
+
+                                
+
+                                print("Suscessfuly transfered!!!!!")
                                 print("balance left: ",data_load[sname]["money"])
                                 print("-"*20)
                                 print("[1]","\033[31m","Deposit money","\033[0m")

@@ -1,0 +1,36 @@
+{
+    "anish": {
+        "history": [
+            "account created on: 2025-12-25 20:19:15",
+            {
+                "type": "First depo",
+                "amount": 12333,
+                "time and date": "2025-12-25 20:19:15"
+            },
+            {
+                "type": "money transfer",
+                "from": "anish",
+                "to": "chintu",
+                "transfered amount": 400,
+                "date and time": "2025-12-25 20:35:09"
+            }
+        ]
+    },
+    "chintu": {
+        "history": [
+            "account created on: 2025-12-25 20:20:20",
+            {
+                "type": "First depo",
+                "amount": 20000,
+                "time and date": "2025-12-25 20:20:20"
+            },
+            {
+                "type": "money recived",
+                "from": "anish",
+                "to": "chintu",
+                "transfered amount": 400,
+                "date and time": "2025-12-25 20:35:09"
+            }
+        ]
+    }
+}
