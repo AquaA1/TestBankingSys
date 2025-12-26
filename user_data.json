@@ -1,14 +1,22 @@
 {
     "anish": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-        "money": 89650
+        "money": 89650,
+        "admin_ctrl": false
     },
     "chintu": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-        "money": 20800
+        "money": 20800,
+        "admin_ctrl": false
     },
     "tarun": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-        "money": 59950
+        "money": 59950,
+        "admin_ctrl": false
+    },
+    "haha": {
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "money": 12345,
+        "admin_ctrl": false
     }
 }
