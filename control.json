@@ -56,5 +56,15 @@
                 "date and time": "2025-12-25 20:38:31"
             }
         ]
+    },
+    "haha": {
+        "history": [
+            "account created on: 2025-12-26 13:17:42",
+            {
+                "type": "First depo",
+                "amount": 12345,
+                "time and date": "2025-12-26 13:17:42"
+            }
+        ]
     }
 }
