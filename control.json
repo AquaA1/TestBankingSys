@@ -41,6 +41,13 @@
                 "to": "chintu",
                 "transfered amount": 400,
                 "date and time": "2025-12-25 20:35:09"
+            },
+            {
+                "type": "money recived",
+                "from": "ani",
+                "to": "chintu",
+                "transfered amount": 200,
+                "date and time": "2025-12-27 20:53:36"
             }
         ]
     },
@@ -72,6 +79,25 @@
                 "to": "self",
                 "amount": 12345,
                 "date and time": "2025-12-26 13:17:42"
+            }
+        ]
+    },
+    "ani": {
+        "history": [
+            "account created on: 2025-12-27 20:52:53",
+            {
+                "type": "First depo",
+                "from": "self",
+                "to": "self",
+                "transfered amount": 12345,
+                "date and time": "2025-12-27 20:52:53"
+            },
+            {
+                "type": "money transfer",
+                "from": "ani",
+                "to": "chintu",
+                "transfered amount": 200,
+                "date and time": "2025-12-27 20:53:36"
             }
         ]
     }
