@@ -6,7 +6,7 @@
     },
     "chintu": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-        "money": 20800,
+        "money": 21000,
         "admin_ctrl": false
     },
     "tarun": {
@@ -17,6 +17,11 @@
     "haha": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
         "money": 12345,
+        "admin_ctrl": false
+    },
+    "ani": {
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "money": 12145,
         "admin_ctrl": false
     }
 }
