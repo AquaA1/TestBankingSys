@@ -4,8 +4,10 @@
             "account created on: 2025-12-25 20:19:15",
             {
                 "type": "First depo",
+                "from": "self",
+                "to": "self",
                 "amount": 12333,
-                "time and date": "2025-12-25 20:19:15"
+                "date and time": "2025-12-25 20:19:15"
             },
             {
                 "type": "money transfer",
@@ -28,8 +30,10 @@
             "account created on: 2025-12-25 20:20:20",
             {
                 "type": "First depo",
+                "from": "self",
+                "to": "self",
                 "amount": 20000,
-                "time and date": "2025-12-25 20:20:20"
+                "date and time": "2025-12-25 20:20:20"
             },
             {
                 "type": "money recived",
@@ -45,8 +49,10 @@
             "account created on: 2025-12-25 20:38:31",
             {
                 "type": "First depo",
+                "from": "self",
+                "to": "self",
                 "amount": 60000,
-                "time and date": "2025-12-25 20:38:31"
+                "date and time": "2025-12-25 20:38:31"
             },
             {
                 "type": "money transfer",
@@ -62,8 +68,10 @@
             "account created on: 2025-12-26 13:17:42",
             {
                 "type": "First depo",
+                "from": "self",
+                "to": "self",
                 "amount": 12345,
-                "time and date": "2025-12-26 13:17:42"
+                "date and time": "2025-12-26 13:17:42"
             }
         ]
     }
