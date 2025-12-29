@@ -100,5 +100,17 @@
                 "date and time": "2025-12-27 20:53:36"
             }
         ]
+    },
+    "chin": {
+        "history": [
+            "account created on: 2025-12-29 22:50:05",
+            {
+                "type": "First depo",
+                "from": "self",
+                "to": "self",
+                "transfered amount": 12341,
+                "date and time": "2025-12-29 22:50:05"
+            }
+        ]
     }
 }

@@ -23,5 +23,10 @@
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
         "money": 12145,
         "admin_ctrl": false
+    },
+    "chin": {
+        "password": "f6ff5adab5180a3d10ffb611f2caddd0a2b0922bde398ad186e946480bec3943",
+        "money": 12341,
+        "admin_ctrl": false
     }
 }
