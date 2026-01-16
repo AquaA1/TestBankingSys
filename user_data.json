@@ -1,32 +1,58 @@
 {
     "anish": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-        "money": 89650,
+        "password_type": "custom",
+        "money": 89688,
+        "DOB": "2007-12-23",
         "admin_ctrl": false
     },
     "chintu": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-        "money": 21000,
+        "password_type": "custom",
+        "money": 21012,
+        "DOB": "2007-12-23",
         "admin_ctrl": false
     },
     "tarun": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "password_type": "custom",
         "money": 59950,
+        "DOB": "2007-12-23",
         "admin_ctrl": false
     },
     "haha": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "password_type": "custom",
         "money": 12345,
+        "DOB": "2007-12-23",
         "admin_ctrl": false
     },
     "ani": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "password_type": "custom",
         "money": 12145,
+        "DOB": "2007-12-23",
         "admin_ctrl": false
     },
     "chin": {
         "password": "f6ff5adab5180a3d10ffb611f2caddd0a2b0922bde398ad186e946480bec3943",
+        "password_type": "custom",
         "money": 12341,
+        "DOB": "2007-12-23",
+        "admin_ctrl": false
+    },
+    "test": {
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "password_type": "custom",
+        "money": 12,
+        "DOB": "2007-12-23",
+        "admin_ctrl": false
+    },
+    "test1": {
+        "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
+        "password_type": "custom",
+        "money": 1234,
+        "DOB": "2007-12-23",
         "admin_ctrl": false
     }
 }

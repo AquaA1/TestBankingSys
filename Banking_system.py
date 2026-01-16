@@ -2,12 +2,31 @@ import json
 import pandas as pd
 import hashlib
 import getpass
-import os
+#import os
 from datetime import datetime
 
 now=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 absolute_path=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\user_data.json"
 control_j=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\control.json"
+admin_notification=r"C:\Volume A\VS code codesss\gitt\TestBankingSys\admin_notification.json"
+
+def save_data_user(data):
+    with open(absolute_path, "w") as f:
+        json.dump(data,f,indent=4)
+
+def read_data_user():
+    with open(absolute_path, "r") as f:
+        return json.load(f)
+    
+def save_data_admin_notifi(data1):
+    with open(admin_notification,"w") as f:
+        json.dump(data1,f,indent=4)
+
+def read_data_admin_notifi():
+    with open(admin_notification,"r") as f:
+        return json.load(f)
+    
+
 
 def signup():
     global name
@@ -28,11 +47,22 @@ def signup():
             #hashing the password
             hashed_p=hashing_password(password)
             money=int(input("Enter amount to deposit: "))
+            
+            while True:
+                input_date=input("Enter your date of birth: YYYY-MM-DD format only: ")
+                try:
+                    dob=datetime.strptime(input_date, "%Y-%m-%d").date()
+                    break
+                except ValueError:
+                    print("invalid date")
 
             signup_data={
             name.lower():{
                 "password":hashed_p,
-                'money':money
+                "password_type":"custom",
+                'money':money,
+                "DOB":dob.isoformat(),
+                "admin_ctrl":False
                 }
             }
 
@@ -46,8 +76,10 @@ def signup():
 
             his_transfer={
                 "type":"First depo",
-                "amount":money,
-                "time and date":now
+                "from": "self",
+                "to": "self",
+                "transfered amount":money,
+                "date and time":now
             }
 
             his_create={
@@ -68,6 +100,19 @@ def signup():
 
             with open(control_j, "w") as m:
                 json.dump(ma,m,indent=4)
+
+# addinng initial data to admin_notification
+
+            load_admin_notifi=read_data_admin_notifi()
+            
+            load_admin_notifi.update({
+                name :{
+                    "notif": "nill"
+                }
+            })
+            save_data_admin_notifi(load_admin_notifi)
+
+
             
 
             print("-------------------------------")
@@ -88,46 +133,73 @@ def hashing_password(password):
 def login():
 
     global sname
-    sname=input("Enter your name: ")
+    while True:
+        sname=input("Enter your name: ")
 
-    with open(absolute_path,"r") as f:
-        aa=json.load(f)
-    
-    if sname.lower()=="admin":
-        admin()
-        exit()
-
-    elif sname not in aa:
-        print("No user found")
-        ask_again=input("Want to try again? y/n:")
-        if ask_again=="y":
-            start()
-        else:
-            exit()
-
-    else:
-
-        spass=getpass.getpass("Enter your password:  ")
-        spass_hashed=hashing_password(spass)
+        change_p_notif=read_data_user()
 
         with open(absolute_path,"r") as f:
-            ka=json.load(f)
-            s1pass=ka[sname.lower()]["password"]
-            mon1=ka[sname.lower()]["money"]
-
-        if spass_hashed==s1pass:
-            print("Welcome")
-            print("Avaiable balance is: $ ",mon1)
-            user_control()
+            aa=json.load(f)
         
+        if sname.lower()=="admin":
+            admin()
+            exit()
+
+        elif sname not in aa:
+            print("No user found")
+            ask_again=input("Want to try again? y/n:")
+            if ask_again=="y":
+                start()
+            else:
+                exit()
+
         else:
-            print("Wrong password")
-            start()
+            if change_p_notif[sname]["password_type"]=="default":
+                print("Password has been set to defaut by ADMIN")
+                print("Your password is your dob in YYYY-MM-DD format")
+
+            spass=getpass.getpass("Enter your password:  ")
+            spass_hashed=hashing_password(spass)
+
+            with open(absolute_path,"r") as f:
+                ka=json.load(f)
+                s1pass=ka[sname.lower()]["password"]
+                mon1=ka[sname.lower()]["money"]
+
+            if spass_hashed==s1pass:
+                print("Welcome")
+                print("Avaiable balance is: $ ",mon1)
+                user_control()
+                break
+            
+            else:
+                print("Wrong password")
+                print("[1] Try again")
+                print("[2] Forget password")
+                f_pass=int(input("Enter your choice: "))
+                if f_pass==1:
+                    continue
+                
+                elif f_pass==2:
+                    user_data=read_data_user()
+                    user_data[sname]["admin_ctrl"]=True
+                    save_data_user(user_data)
+
+                    admin_message=input("Type your problem: ")
+                    user_mess=read_data_admin_notifi()
+                    user_mess[sname]["notif"]=admin_message
+                    save_data_admin_notifi(user_mess)
+
+                    print("Notification sent to admin wait for responce!!")
+                    break
+
+
+                    
 
 def admin():
     apass=getpass.getpass("Enter the password:")
     if apass=="a":
-        admin_control()
+        admin_control()      
 
     else:
         print("You are not a admin")
@@ -141,8 +213,15 @@ def admin_control():
     print("Admin control")
     print("------------------------------")
 
+    notif_count=0
+    data_nill_check=read_data_admin_notifi()
+    for user , info in data_nill_check.items():
+        if info.get("notif") != "nill":
+            notif_count+=1
+
     print("1. See data ")
     print("2. Edit data")
+    print(f"3. You have {notif_count} messages")
 
     with open(absolute_path,"r") as f:
             aa=json.load(f)
@@ -154,7 +233,7 @@ def admin_control():
 
     while True:
         try:
-            aa1=int(input("select [1][2]: "))
+            aa1=int(input("select [0][1][2][3]: "))
         except:
             print("Choose correctly!!!")
             continue
@@ -186,9 +265,42 @@ def admin_control():
                     exit()
             else:
                 exit()
+
+        elif aa1==3:
+            for user , info in data_nill_check.items():
+                if info.get("notif") != "nill":
+                    print(f"message from {user}")
+                    print(f"message is {data_nill_check[user]['notif']}")
+                    print("-------------------------------------")
+                    admin_w=input("Want to jump to password change? y/n: ")
+                    if admin_w=="y":
+                        auto_password_change()
+                    else:
+                        break
+
+        elif aa1==0:
+            break
+
         else:
             print("Choose correctly!!")
             continue
+
+def auto_password_change():
+    p_change=input("Enter the name of the client to change password: ")
+    user_data_p_change=read_data_user()
+    user_notif_p_change=read_data_admin_notifi()
+
+    user_dob_hashed=hashing_password(user_data_p_change[p_change]["DOB"])
+    user_data_p_change[p_change]["password"]=user_dob_hashed
+    user_data_p_change[p_change]["admin_ctrl"]=False
+    user_data_p_change[p_change]["password_type"]="default"
+
+    user_notif_p_change[p_change]["notif"]="nill"
+
+    save_data_user(user_data_p_change)
+    save_data_admin_notifi(user_notif_p_change)
+
+
 
 
 
@@ -302,6 +414,11 @@ def user_control():
 
                     with open(absolute_path,"w") as k:
                         json.dump(p,k,indent=4)
+
+                    change_default=read_data_user()
+                    change_default[sname]["password_type"]="custom"
+                    save_data_user(change_default)
+
                     print("Password succesfully changed!!!!")
                     print("-"*20)
                     print("Your are logged out login again")
