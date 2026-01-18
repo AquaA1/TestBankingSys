@@ -26,6 +26,10 @@ def read_data_admin_notifi():
     with open(admin_notification,"r") as f:
         return json.load(f)
     
+def read_data_control():
+    with open(control_j,"r") as f:
+        return json.load(f)
+    
 
 
 def signup():
@@ -78,7 +82,7 @@ def signup():
                 "type":"First depo",
                 "from": "self",
                 "to": "self",
-                "transfered amount":money,
+                "amount":money,
                 "date and time":now
             }
 
@@ -90,12 +94,11 @@ def signup():
                 }
             }
 
-            create_time=f"account created on: {now}"
             with open(control_j , "r") as k:
                 ma=json.load(k)
             
             ma.update(his_create)
-            ma[name]["history"].append(create_time)
+            #ma[name]["history"].append(create_time)
             ma[name]["history"].append(his_transfer)
 
             with open(control_j, "w") as m:
@@ -350,6 +353,7 @@ def user_control():
     print("[2]","\033[32m","Withdraw money","\033[0m")
     print("[3]  Change Password")
     print("[4]  Transfer money")
+    print("[5]  See Transistion history")
     print("[0]  EXIT")
     print("-"*20) 
     
@@ -451,7 +455,7 @@ def user_control():
                                     "type":"money transfer",
                                     "from":sname,
                                     "to":user_tname,
-                                    "transfered amount":amt_t,
+                                    "amount":amt_t,
                                     "date and time":now
                                 }
 
@@ -459,7 +463,7 @@ def user_control():
                                     "type":"money recived",
                                     "from":sname,
                                     "to":user_tname,
-                                    "transfered amount":amt_t,
+                                    "amount":amt_t,
                                     "date and time":now
                                 }
 
@@ -495,10 +499,34 @@ def user_control():
                     else:
                         print("User not found , re enter the name")
                         continue
+            elif user_choice==5:
+                print(UserTransferData(sname))
 
         except ValueError:
             print("Re enter with correct place values")
             
+def UserTransferData(UserName):
+    data = read_data_control()
+    username = UserName.lower()
+
+    if username not in data:
+        return pd.DataFrame()  # safe empty table
+
+    rows = []
+
+    for txn in data[username]["history"]:
+        rows.append({
+            "user": username,
+            "type": txn["type"],
+            "from": txn["from"],
+            "to": txn["to"],
+            "amount": txn["amount"],
+            "date_time": txn["date and time"]
+        })
+
+    df = pd.DataFrame(rows)
+    return df
+
 
         
 

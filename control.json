@@ -1,7 +1,6 @@
 {
     "anish": {
         "history": [
-            "account created on: 2025-12-25 20:19:15",
             {
                 "type": "First depo",
                 "from": "self",
@@ -13,35 +12,41 @@
                 "type": "money transfer",
                 "from": "anish",
                 "to": "chintu",
-                "transfered amount": 400,
+                "amount": 400,
                 "date and time": "2025-12-25 20:35:09"
             },
             {
                 "type": "money recived",
                 "from": "tarun",
                 "to": "anish",
-                "transfered amount": 50,
+                "amount": 50,
                 "date and time": "2025-12-25 20:38:31"
             },
             {
                 "type": "money transfer",
                 "from": "anish",
                 "to": "chintu",
-                "transfered amount": 50,
+                "amount": 50,
                 "date and time": "2026-01-11 19:48:14"
             },
             {
                 "type": "money transfer",
                 "from": "anish",
                 "to": "chintu",
-                "transfered amount": 12,
+                "amount": 12,
                 "date and time": "2026-01-15 20:23:48"
+            },
+            {
+                "type": "money transfer",
+                "from": "anish",
+                "to": "chintu",
+                "amount": 12345,
+                "date and time": "2026-01-16 21:04:57"
             }
         ]
     },
     "chintu": {
         "history": [
-            "account created on: 2025-12-25 20:20:20",
             {
                 "type": "First depo",
                 "from": "self",
@@ -53,35 +58,41 @@
                 "type": "money recived",
                 "from": "anish",
                 "to": "chintu",
-                "transfered amount": 400,
+                "amount": 400,
                 "date and time": "2025-12-25 20:35:09"
             },
             {
                 "type": "money recived",
                 "from": "ani",
                 "to": "chintu",
-                "transfered amount": 200,
+                "amount": 200,
                 "date and time": "2025-12-27 20:53:36"
             },
             {
                 "type": "money recived",
                 "from": "anish",
                 "to": "chintu",
-                "transfered amount": 50,
+                "amount": 50,
                 "date and time": "2026-01-11 19:48:14"
             },
             {
                 "type": "money recived",
                 "from": "anish",
                 "to": "chintu",
-                "transfered amount": 12,
+                "amount": 12,
                 "date and time": "2026-01-15 20:23:48"
+            },
+            {
+                "type": "money recived",
+                "from": "anish",
+                "to": "chintu",
+                "amount": 12345,
+                "date and time": "2026-01-16 21:04:57"
             }
         ]
     },
     "tarun": {
         "history": [
-            "account created on: 2025-12-25 20:38:31",
             {
                 "type": "First depo",
                 "from": "self",
@@ -93,14 +104,13 @@
                 "type": "money transfer",
                 "from": "tarun",
                 "to": "anish",
-                "transfered amount": 50,
+                "amount": 50,
                 "date and time": "2025-12-25 20:38:31"
             }
         ]
     },
     "haha": {
         "history": [
-            "account created on: 2025-12-26 13:17:42",
             {
                 "type": "First depo",
                 "from": "self",
@@ -112,56 +122,52 @@
     },
     "ani": {
         "history": [
-            "account created on: 2025-12-27 20:52:53",
             {
                 "type": "First depo",
                 "from": "self",
                 "to": "self",
-                "transfered amount": 12345,
+                "amount": 12345,
                 "date and time": "2025-12-27 20:52:53"
             },
             {
                 "type": "money transfer",
                 "from": "ani",
                 "to": "chintu",
-                "transfered amount": 200,
+                "amount": 200,
                 "date and time": "2025-12-27 20:53:36"
             }
         ]
     },
     "chin": {
         "history": [
-            "account created on: 2025-12-29 22:50:05",
             {
                 "type": "First depo",
                 "from": "self",
                 "to": "self",
-                "transfered amount": 12341,
+                "amount": 12341,
                 "date and time": "2025-12-29 22:50:05"
             }
         ]
     },
     "test": {
         "history": [
-            "account created on: 2026-01-15 23:30:37",
             {
                 "type": "First depo",
                 "from": "self",
                 "to": "self",
-                "transfered amount": 12,
+                "amount": 12,
                 "date and time": "2026-01-15 23:30:37"
             }
         ]
     },
     "test1": {
         "history": [
-            "account created on: 2026-01-16 00:32:11",
             {
                 "type": "First depo",
                 "from": "self",
                 "to": "self",
-                "transfered amount": 1234,
-                "date and time": "2026-01-16 00:32:11"
+                "amount": 12345,
+                "date and time": "2026-01-16 21:20:34"
             }
         ]
     }

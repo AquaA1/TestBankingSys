@@ -2,14 +2,14 @@
     "anish": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
         "password_type": "custom",
-        "money": 89688,
+        "money": 77343,
         "DOB": "2007-12-23",
         "admin_ctrl": false
     },
     "chintu": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
         "password_type": "custom",
-        "money": 21012,
+        "money": 33357,
         "DOB": "2007-12-23",
         "admin_ctrl": false
     },
@@ -51,8 +51,8 @@
     "test1": {
         "password": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
         "password_type": "custom",
-        "money": 1234,
-        "DOB": "2007-12-23",
+        "money": 12345,
+        "DOB": "2007-10-11",
         "admin_ctrl": false
     }
 }
